@@ -1,0 +1,292 @@
+/*  */
+/*  VARIABLES GLOBALES */
+/* ====================== */
+
+:root {
+    --color-primario: #2e7d32;
+    --color-primario-hover: #2a7430;
+    --color-secundario: #4caf50;
+
+    --color-fondo: #f4f4f4;
+    --color-texto: #1f2937;
+    --color-texto-secundario: #7a8796;
+
+    --color-blanco: #ffffff;
+    --color-borde: #d6ddd8;
+    --color-input: #cfd8d3;
+
+    --sombra-suave: 0 14px 28px rgba(0, 0, 0, 0.08);
+    --sombra-media: 0 18px 34px rgba(0, 0, 0, 0.10);
+    --sombra-fuerte: 0 18px 35px rgba(31, 95, 42, 0.22);
+
+    --radio-chico: 10px;
+    --radio-mediano: 16px;
+    --radio-grande: 20px;
+
+    --transicion: all 0.25s ease;
+}
+
+/* ==================== */
+/*  BASE GENERAL */
+/* ================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    min-height: 100vh;
+    position: relative;
+}
+
+.fondo-app {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left, rgba(46, 125, 50, 0.18), transparent 25%),
+        radial-gradient(circle at top right, rgba(76, 175, 80, 0.12), transparent 22%),
+        linear-gradient(180deg, #edf7ee 0%, #f4f4f4 45%, #eef3f8 100%);
+    z-index: -1;
+}
+
+/* ================================== */
+/*  ESTRUCTURA PRINCIPAL */
+/* ========================== */
+.contenedor {
+    width: 90%;
+    max-width: 1280px;
+    margin: 28px auto;
+}
+
+.panel-superior {
+    margin-bottom: 18px;
+}
+
+.encabezado {
+    margin-bottom: 18px;
+    padding: 26px 28px;
+    border-radius: var(--radio-grande);
+    background: linear-gradient(
+        135deg,
+        #1f5f2a 0%,
+        var(--color-primario) 55%,
+        var(--color-secundario) 100%
+    );
+    color: var(--color-blanco);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.subtitulo-app {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    opacity: 0.88;
+}
+
+.titulo-app {
+    margin: 0 0 10px 0;
+    font-size: 38px;
+    line-height: 1;
+}
+
+.descripcion-app {
+    margin: 0;
+    max-width: 760px;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.busqueda-card {
+    padding: 16px;
+    border-radius: var(--radio-grande);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--sombra-suave);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.mapa-card {
+    padding: 14px;
+    border-radius: var(--radio-grande);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--sombra-media);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+/* ========================= */
+/* BUSQUEDA */
+/* ================================== */
+
+.busqueda {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 0;
+}
+
+.busqueda input {
+    flex: 1;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 1px solid var(--color-input);
+    border-radius: 12px;
+    outline: none;
+    background-color: var(--color-blanco);
+    color: var(--color-texto);
+    transition: var(--transicion);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.busqueda input::placeholder {
+    color: var(--color-texto-secundario);
+}
+
+.busqueda input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.14);
+}
+
+.busqueda button {
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(
+        135deg,
+        var(--color-primario) 0%,
+        #3c9240 100%
+    );
+    color: var(--color-blanco);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transicion);
+    box-shadow: 0 10px 18px rgba(46, 125, 50, 0.18);
+}
+
+.busqueda button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 22px rgba(46, 125, 50, 0.24);
+    background: linear-gradient(
+        135deg,
+        var(--color-primario-hover) 0%,
+        #35863a 100%
+    );
+}
+
+.busqueda button:active {
+    transform: translateY(0);
+}
+
+/* ==================== */
+/* MAPA */
+/* ================ */
+
+#map {
+    height: 650px;
+    border-radius: var(--radio-mediano);
+    overflow: hidden;
+}
+
+.leaflet-control-zoom {
+    border: none !important;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14) !important;
+    border-radius: 14px !important;
+    overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    color: var(--color-texto) !important;
+    font-weight: bold;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 14px;
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+}
+
+.leaflet-popup-content {
+    margin: 14px 16px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ================== */
+/*  LABELS DEL MAPA */
+/* ================================== */
+
+.label-zona {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.label-zona div {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 8px 10px;
+    border-radius: var(--radio-chico);
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto);
+    font-weight: bold;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    min-width: 120px;
+}
+
+/* ================================== */
+/* RESPONSIVE */
+/* ===================== */
+
+@media (max-width: 768px) {
+    .contenedor {
+        width: 94%;
+        margin: 18px auto;
+    }
+
+    .encabezado {
+        padding: 22px 18px;
+    }
+
+    .titulo-app {
+        font-size: 30px;
+    }
+
+    .descripcion-app {
+        font-size: 14px;
+    }
+
+    .busqueda {
+        flex-direction: column;
+    }
+
+    .busqueda button {
+        width: 100%;
+    }
+
+    #map {
+        height: 540px;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-app {
+        font-size: 26px;
+    }
+
+    .subtitulo-app {
+        font-size: 12px;
+    }
+
+    #map {
+        height: 480px;
+    }
+}
