@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre Perros</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <div class="menu container-fluid px-0">
+
+        <div class="topbar">
+            <div class="container">
+                <p>Sistema web de gestión de paseos, contratos y cupos disponibles</p>
+            </div>
+        </div>
+
+        <div class="logo">
+            <div class="logo-overlay"></div>
+
+            <img src="img/logo.jpg" alt="Logo de marca">
+
+            <div class="logo-content">
+                <p class="logo-subtitle">Gestión de tutores y paseadores</p>
+                <h1>ENTRE PERROS</h1>
+            </div>
+        </div>
+
+        <main class="container py-4 py-md-5">
+            <div class="login-layout">
+
+                <div class="panel-info">
+                    <div class="panel-info-box">
+                        <span class="panel-badge">Plataforma de gestión</span>
+                        <h2>Organizá paseos de forma simple y clara</h2>
+                        <p>
+                            Entre Perros permite registrar tutores y paseadores, gestionar solicitudes
+                            de paseo y visualizar contratos pendientes de aprobación.
+                        </p>
+
+                        <div class="panel-info-lista">
+                            <div class="panel-item">
+                                <h3>Para tutores</h3>
+                                <p>Podés registrarte, contratar paseadores y consultar cupos disponibles.</p>
+                            </div>
+
+                            <div class="panel-item">
+                                <h3>Para paseadores</h3>
+                                <p>Podés registrarte, revisar solicitudes pendientes y administrar tus cupos.</p>
+                            </div>
+
+                            <div class="panel-item">
+                                <h3>Seguimiento simple</h3>
+                                <p>El sistema muestra contratos, estados y disponibilidad de forma ordenada.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-form">
+
+                    <!-- PANTALLA LOGIN -->
+                    <section id="pantallaLogin" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Ingreso Usuario</h2>
+
+                        <div class="texto-contexto">
+                            Iniciá sesión como tutor o paseador para gestionar contratos y cupos.
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label for="txtUsuario" class="form-label">Usuario</label>
+                            <input type="text" id="txtUsuario" class="form-control" placeholder="Ingresá tu usuario">
+                        </div>
+
+                        <div class="mb-4 text-start">
+                            <label for="txtPass" class="form-label">Contraseña</label>
+                            <input type="password" id="txtPass" class="form-control" placeholder="Ingresá tu contraseña">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <input type="button" id="btnIniciarSesion" value="Ingresar" class="btn btn-warning btn-ui">
+                            <input type="button" id="btnRegistro" value="Registrar Tutor" class="btn btn-outline-dark btn-ui">
+                            <input type="button" id="btnRegistroPaseador" value="Registrar Paseador" class="btn btn-outline-primary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- PANTALLA REGISTRO TUTOR -->
+                    <section id="pantallaRegistro" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Registrar nuevo tutor</h2>
+
+                        <div class="texto-contexto">
+                            Completá los datos para crear tu cuenta y comenzar a buscar paseador.
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label for="txtNuevoUsuario" class="form-label">Usuario</label>
+                            <input type="text" id="txtNuevoUsuario" class="form-control" placeholder="Elegí un usuario">
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label for="txtNuevoPass" class="form-label">Contraseña</label>
+                            <input type="text" id="txtNuevoPass" class="form-control" placeholder="Creá una contraseña">
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label for="txtNombrePerro" class="form-label">Nombre del perro</label>
+                            <input type="text" id="txtNombrePerro" class="form-control" placeholder="Nombre del perro">
+                        </div>
+
+                        <div class="mb-4 text-start">
+                            <label for="slcTamano" class="form-label">Tamaño</label>
+                            <select id="slcTamano" class="form-select">
+                                <option value="chico">Chico</option>
+                                <option value="mediano">Mediano</option>
+                                <option value="grande">Grande</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <input type="button" id="btnConfirmarRegistro" value="Registrar tutor" class="btn btn-warning btn-ui">
+                            <input type="button" id="btnVolverRegistro" value="Volver al login" class="btn btn-outline-secondary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- PANTALLA REGISTRO PASEADOR -->
+                    <section id="pantallaRegistroPaseador" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Registrar nuevo paseador</h2>
+
+                        <div class="texto-contexto">
+                            Registrate como paseador para administrar solicitudes y tus cupos disponibles.
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label for="txtNombrePaseador" class="form-label">Nombre</label>
+                            <input type="text" id="txtNombrePaseador" class="form-control" placeholder="Nombre del paseador">
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label for="txtUsuarioPaseador" class="form-label">Usuario</label>
+                            <input type="text" id="txtUsuarioPaseador" class="form-control" placeholder="Elegí un usuario">
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label for="txtPassPaseador" class="form-label">Contraseña</label>
+                            <input type="text" id="txtPassPaseador" class="form-control" placeholder="Creá una contraseña">
+                        </div>
+
+                        <div class="mb-4 text-start">
+                            <label for="txtCupoPaseador" class="form-label">Cupo máximo</label>
+                            <input type="number" id="txtCupoPaseador" class="form-control" placeholder="Ingresá el cupo máximo">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <input type="button" id="btnConfirmarRegistroPaseador" value="Registrar paseador" class="btn btn-success btn-ui">
+                            <input type="button" id="btnVolverRegistroPaseador" value="Volver al login" class="btn btn-outline-secondary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- PANTALLA MENU TUTOR -->
+                    <section id="pantallaMenuCliente" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Menu cliente</h2>
+
+                        <div class="texto-contexto">
+                            Desde esta pantalla podés contratar, cancelar y consultar disponibilidad.
+                        </div>
+
+                        <div class="grid-botones">
+                            <input type="button" id="btnCerrarSesionCliente" value="Cerrar sesion cliente" class="btn btn-outline-danger btn-ui">
+                            <input type="button" id="btnIrAContratar" value="Contratar Paseador" class="btn btn-warning btn-ui">
+                            <input type="button" id="btnCancelarContrato" value="Cancelar contrato" class="btn btn-outline-dark btn-ui">
+                            <input type="button" id="btnMostrarTabla" value="Mostrar Tabla de cupos" class="btn btn-outline-primary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- mostrar tabla de cupos para Tutor -->
+                    <section id="pantallaTablaTutor" class="pantalla card-ui card-ui-wide mx-auto">
+                        <h2 class="titulo-seccion">Tabla de cupos de paseadores</h2>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle tabla-ui">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Usuario</th>
+                                        <th>Cupos disponibles</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaPaseadoresContratados">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="d-grid d-md-flex justify-content-md-end">
+                            <input type="button" id="btnVolverPantallaMenuClienteDespuesDeTabla" value="Volver" class="btn btn-outline-secondary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- mostrar contratos a cancelar -->
+                    <section id="cancelarContrato" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Informacion del contrato</h2>
+
+                        <div class="info-box">
+                            <p id="infoContrato" class="mb-0"></p>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <input type="button" id="btnDardeBaja" value="Dar de baja" class="btn btn-danger btn-ui">
+                            <input type="button" id="btnVolverPantallaMenuCliente1" value="Volver" class="btn btn-outline-secondary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- pantalla contratar paseador -->
+                    <section id="pantallaContratarPaseador" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Contratar paseador</h2>
+
+                        <div class="texto-contexto">
+                            Seleccioná un paseador disponible según los cupos requeridos.
+                        </div>
+
+                        <div class="mb-4 text-start">
+                            <label for="slcContratarPaseador" class="form-label">Paseador</label>
+                            <select id="slcContratarPaseador" class="form-select"></select>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <input type="button" id="btnContratar" value="Contratar" class="btn btn-warning btn-ui">
+                            <input type="button" id="btnVolveMenuTutor" value="Volver" class="btn btn-outline-secondary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- PANTALLA MENU PASEADOR -->
+                    <section id="pantallaMenuPaseador" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Menu Paseador</h2>
+
+                        <div class="texto-contexto">
+                            Administrá solicitudes recibidas y consultá los perros asignados.
+                        </div>
+
+                        <div class="grid-botones">
+                            <input type="button" id="btncerrarSesionPaseador" value="Cerrar sesion paseador" class="btn btn-outline-danger btn-ui">
+                            <input type="button" id="btnMostrarTablaParaPaseador" value="Mostrar Tabla de cupos" class="btn btn-outline-primary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- mostrar tabla de cupos para Paseador -->
+                    <section id="pantallaTablaPaseador" class="pantalla card-ui card-ui-wide mx-auto">
+                        <h2 class="titulo-seccion">Perros asignados</h2>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle tabla-ui">
+                                <thead>
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Nombre del Perro</th>
+                                        <th>tamano</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaTutoresContratados">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="d-grid d-md-flex justify-content-md-end">
+                            <input type="button" id="btnVolverMenuPaseador" value="Volver" class="btn btn-outline-secondary btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- previa de contratos -->
+                    <section id="pantallaVerContratosPendientes" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Gestion de contratos</h2>
+
+                        <div class="texto-contexto">
+                            Revisá las solicitudes pendientes y decidí si aceptarlas.
+                        </div>
+
+                        <div class="d-grid">
+                            <input type="button" id="btnVercontratos" value="Ver contratos pendientes" class="btn btn-warning btn-ui">
+                        </div>
+                    </section>
+
+                    <!-- PANTALLA DEL PASEADOR APROBAR CONTRATO -->
+                    <section id="pantallaAprobarContrato" class="pantalla card-ui mx-auto">
+                        <h2 class="titulo-seccion">Contratos pendientes</h2>
+
+                        <div class="mb-4 text-start">
+                            <label for="slcContratosActivos" class="form-label">Seleccioná un contrato</label>
+                            <select id="slcContratosActivos" class="form-select"></select>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <input type="button" id="btnAprobarContrato" value="Aprobar contrato" class="btn btn-success btn-ui">
+                            <input type="button" id="btnVolverMenuPaseador1" value="Volver Menu" class="btn btn-outline-secondary btn-ui">
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

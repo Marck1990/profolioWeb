@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGA+</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="fondo-app"></div>
+
+    <div class="contenedor">
+
+        <div class="panel-superior">
+            <div class="encabezado">
+                <p class="subtitulo-app">Sistema de gestión agraria</p>
+                <h1 class="titulo-app">SIGA+</h1>
+                <p class="descripcion-app">Buscá localidades, visualizá zonas en el mapa y observá condiciones del suelo, clima y vegetación.</p>
+            </div>
+
+            <div class="busqueda-card">
+
+                <div class="busqueda">
+                    <input type="text" id="busqueda" placeholder="Buscar localidad..." />
+                    <button id="btnBuscar">Buscar</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mapa-card">
+            <div id="map"></div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="function.js"></script>
+
+</body>
+
+</html>

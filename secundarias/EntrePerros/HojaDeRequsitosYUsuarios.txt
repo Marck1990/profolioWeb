@@ -1,0 +1,93 @@
+
+		# Credenciales de prueba – Entre Perros
+
+## Usuarios Paseadores
+
+### Paseador 1
+
+Usuario: paseador1
+Contraseña: Paseador1
+
+### Paseador 2
+
+Usuario: paseador2
+Contraseña: Paseador2
+
+### Paseador 3
+
+Usuario: paseador3
+Contraseña: Paseador3
+
+### Paseador 4
+
+Usuario: paseador4
+Contraseña: Paseador4
+
+### Paseador 5
+
+Usuario: paseador5
+Contraseña: Paseador5
+
+## Usuarios Tutores
+
+### Tutor 1
+
+Usuario: tutor1
+Contraseña: Tutor1
+
+### Tutor 2
+
+Usuario: tutor2
+Contraseña: Tutor2
+
+### Tutor 3
+
+Usuario: tutor3
+Contraseña: Tutor3
+
+### Tutor 4
+
+Usuario: tutor4
+Contraseña: Tutor4
+
+### Tutor 5
+
+Usuario: tutor5
+Contraseña: Tutor5
+
+### Tutor 6
+
+Usuario: tutor6
+Contraseña: Tutor6
+
+### Tutor 7
+
+Usuario: tutor7
+Contraseña: Tutor7
+
+### Tutor 8
+
+Usuario: tutor8
+Contraseña: Tutor8
+
+### Tutor 9
+
+Usuario: tutor9
+Contraseña: Tutor9
+
+### Tutor 10
+
+Usuario: tutor10
+Contraseña: Tutor10
+
+## Observaciones
+
+Todas las contraseñas cumplen con las validaciones actuales del sistema:
+
+* mínimo 6 caracteres
+* al menos una mayúscula
+* al menos una minúscula
+* al menos un número
+
+Estas cuentas fueron creadas únicamente para facilitar el testing funcional de la aplicación.
+	
