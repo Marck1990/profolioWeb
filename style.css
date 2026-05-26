@@ -889,3 +889,62 @@ RESPONSIVE
   }
 
 }
+
+
+
+
+/* EFECTOS AGREGADOS POSTERIORMEKNTE */
+
+/* efecto parallax */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.2s ease-out;
+}
+
+/* efecto giro logo */
+.logo-icon {
+  animation: logoSpin 3s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes logoSpin {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  75% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* efecto moneda titulos */
+.section-title .coin-letter {
+  display: inline-block;
+  color: var(--color-primary);
+  animation: coinLetter 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes coinLetter {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  80% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+}

@@ -92,6 +92,35 @@ modal.addEventListener("click", function (e) {
 });
 
 
+// efectos agregados posteriormente
 
+/* efecto parallax */
+const hero = document.querySelector(".hero");
+const heroContainer = document.querySelector(".hero-container");
 
+if (hero && heroContainer) {
+    hero.addEventListener("mousemove", function (e) {
+        const x = (window.innerWidth / 2 - e.clientX) / 40;
+        const y = (window.innerHeight / 2 - e.clientY) / 40;
 
+        heroContainer.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    hero.addEventListener("mouseleave", function () {
+        heroContainer.style.transform = "translate(0, 0)";
+    });
+}
+
+/* efecto moneda en titulos */
+const sectionTitles = document.querySelectorAll(".section-title");
+
+sectionTitles.forEach(function (title) {
+    const text = title.textContent.trim();
+
+    if (text.length > 0) {
+        const firstLetter = text.charAt(0);
+        const restText = text.slice(1);
+
+        title.innerHTML = `<span class="coin-letter">${firstLetter}</span>${restText}`;
+    }
+});
