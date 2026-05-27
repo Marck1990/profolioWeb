@@ -948,3 +948,27 @@ RESPONSIVE
     transform: rotateY(360deg);
   }
 }
+
+
+/* efecto giro boton demo */
+
+.btn-flip {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 600px;
+}
+
+.btn-flip span {
+  display: inline-block;
+  transition: transform 0.6s ease;
+}
+
+.btn-flip.is-flipping span {
+  transform: rotateY(360deg);
+}
+
+.btn-flip:hover {
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.35);
+}
+

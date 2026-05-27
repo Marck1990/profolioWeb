@@ -124,3 +124,22 @@ sectionTitles.forEach(function (title) {
         title.innerHTML = `<span class="coin-letter">${firstLetter}</span>${restText}`;
     }
 });
+
+/* efecto giro antes de abrir demo */
+
+const flipButtons = document.querySelectorAll(".btn-flip");
+
+flipButtons.forEach(function (button) {
+    button.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const url = this.href;
+
+        this.classList.add("is-flipping");
+
+        setTimeout(function () {
+            window.open(url, "_blank", "noopener,noreferrer");
+            button.classList.remove("is-flipping");
+        }, 650);
+    });
+});
