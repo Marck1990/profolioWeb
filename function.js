@@ -143,3 +143,76 @@ flipButtons.forEach(function (button) {
         }, 650);
     });
 });
+
+
+
+
+/* lanzamiento del sobre hacia contacto */
+
+const envelopeLaunch = document.getElementById("envelopeLaunch");
+const contactSection = document.getElementById("contacto");
+
+if (envelopeLaunch && contactSection) {
+
+    envelopeLaunch.addEventListener("click", function () {
+
+        const envelope = envelopeLaunch.querySelector(".envelope-icon");
+
+        const envelopePosition = envelope.getBoundingClientRect();
+
+        const flyingEnvelope = envelope.cloneNode(true);
+
+        flyingEnvelope.classList.add("envelope-flight");
+
+        flyingEnvelope.style.left = envelopePosition.left + "px";
+        flyingEnvelope.style.top = envelopePosition.top + "px";
+
+        document.body.appendChild(flyingEnvelope);
+
+
+        /* movimiento de la pagina */
+
+        const startPosition = window.scrollY;
+
+        const targetPosition =
+            contactSection.getBoundingClientRect().top +
+            window.scrollY -
+            70;
+
+        const distance = targetPosition - startPosition;
+
+        const duration = 900;
+
+        let startTime = null;
+
+
+        function scrollAnimation(currentTime) {
+
+            if (!startTime) {
+                startTime = currentTime;
+            }
+
+            const elapsedTime = currentTime - startTime;
+
+            const progress = Math.min(elapsedTime / duration, 1);
+
+            const ease =
+                progress < 0.5
+                    ? 2 * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+            window.scrollTo(
+                0,
+                startPosition + distance * ease
+            );
+
+            if (progress < 1) {
+                requestAnimationFrame(scrollAnimation);
+            } else {
+                flyingEnvelope.remove();
+            }
+        }
+
+        requestAnimationFrame(scrollAnimation);
+    });
+}

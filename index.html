@@ -23,11 +23,9 @@
     <meta property="og:description"
         content="Desarrollador Web & Software. Conocé mis proyectos, habilidades y trabajos en desarrollo.">
 
-    <meta property="og:url"
-        content="https://profolio-web-mj.vercel.app/">
+    <meta property="og:url" content="https://profolio-web-mj.vercel.app/">
 
-    <meta property="og:image"
-        content="https://profolio-web-mj.vercel.app/img/compartir.png">
+    <meta property="og:image" content="https://profolio-web-mj.vercel.app/img/compartir.png">
 
     <meta property="og:image:type" content="image/png">
 
@@ -38,38 +36,42 @@
     <!-- vista previa en otras plataformas -->
     <meta name="twitter:card" content="summary_large_image">
 
-    <meta name="twitter:title"
-        content="Marcos Juarez | Portfolio">
+    <meta name="twitter:title" content="Marcos Juarez | Portfolio">
 
     <meta name="twitter:description"
         content="Desarrollador Web & Software. Conocé mis proyectos, habilidades y trabajos en desarrollo.">
 
-    <meta name="twitter:image"
-        content="https://profolio-web-mj.vercel.app/img/compartir.png">
+    <meta name="twitter:image" content="https://profolio-web-mj.vercel.app/img/compartir.png">
 
     <!-- estilos -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header class="header">
-        <div class="container nav">
 
-            <div class="logo">
-                <div class="logo-icon">M.J</div>
-                <span class="logo-text">Portfolio</span>
+    <header class="header">
+    <div class="container nav">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                <img src="img/logo.png" alt="Logo MJ">
             </div>
 
-            <nav class="menu">
-                <a href="#inicio">Inicio</a>
-                <a href="#sobre-mi">Sobre mí</a>
-                <a href="#proyectos">Proyectos</a>
-                <a href="#habilidades">Habilidades</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
+            <span class="logo-text">Portfolio</span>
 
         </div>
-    </header>
+
+        <nav class="menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+    </div>
+</header>
 
 
 
@@ -78,8 +80,13 @@
         <div class="hero-container">
 
             <div class="hero-badge">
-                <span class="dot"></span>
-                Disponible para proyectos
+                <button class="envelope-button" id="envelopeLaunch" type="button" aria-label="Ir a contacto">
+                    <span class="envelope-icon" aria-hidden="true">
+                        <span class="envelope-flap"></span>
+                    </span>
+                </button>
+
+                Disponible para proyectos, dale click al sobre!
             </div>
 
             <h1 class="hero-title">
@@ -332,10 +339,12 @@
 
                     <h3>Registro Laboral</h3>
                     <p>
-                       Registro Laboral es una aplicación web creada para ayudar a trabajadores a registrar sus jornadas, controlar horas trabajadas y licencias, y generar informes mensuales ordenados.
+                        Registro Laboral es una aplicación web creada para ayudar a trabajadores a registrar sus
+                        jornadas, controlar horas trabajadas y licencias, y generar informes mensuales ordenados.
                     </p>
                     <P>
-                        Fue desarrollada con HTML, CSS y JavaScript, utilizando Supabase para la autenticación y almacenamiento de datos, además de herramientas para generar archivos PDF y códigos QR.
+                        Fue desarrollada con HTML, CSS y JavaScript, utilizando Supabase para la autenticación y
+                        almacenamiento de datos, además de herramientas para generar archivos PDF y códigos QR.
                     </P>
                     <P>
                         Tecnologías: HTML, CSS, Bootstrap, JavaScript, Supabase y PostgreSQL.
@@ -347,7 +356,8 @@
 
 
                     <div class="project-links">
-                        <a href="https://registro-laboral-nine.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-flip">
+                        <a href="https://registro-laboral-nine.vercel.app/" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-primary btn-flip">
                             <span>Pruébalo</span>
                         </a>
 
