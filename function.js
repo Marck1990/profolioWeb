@@ -134,6 +134,8 @@ const heroVideo = document.querySelector(".hero-video");
 function updateHeroMotion() {
     if (reducedMotion.matches) {
         heroContainer.style.removeProperty("transform");
+    }
+    if (reducedMotion.matches || hero.classList.contains("ghost-fibers-ready")) {
         heroVideo.pause();
     } else {
         heroVideo.play().catch(() => {});
