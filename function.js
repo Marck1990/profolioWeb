@@ -1,5 +1,5 @@
 const form = document.querySelector(".contact-form");
-const status = document.getElementById("form-status");
+const formStatus = document.getElementById("form-status");
 
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -16,50 +16,79 @@ form.addEventListener("submit", async function (e) {
         });
 
         if (response.ok) {
-            status.innerHTML = " Mensaje enviado correctamente";
+            formStatus.textContent = " Mensaje enviado correctamente";
             form.reset();
         } else {
-            status.innerHTML = " Ocurrió un error, intenta de nuevo";
+            formStatus.textContent = " Ocurrió un error, intenta de nuevo";
         }
 
     } catch (error) {
-        status.innerHTML = "Error de conexión";
+        formStatus.textContent = "Error de conexión";
     }
 });
 
+const header = document.querySelector(".header");
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.getElementById("site-menu");
+const mobileMenu = window.matchMedia("(max-width: 768px)");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+function updateHeaderHeight() {
+    document.documentElement.style.setProperty("--header-height", header.offsetHeight + "px");
+}
 
-// PARA MEJORAR ANIMACION
+function updateHeaderShadow() {
+    header.classList.toggle("scrolled", window.scrollY > 50);
+}
 
-// ANIMACION DEL NAV
-window.addEventListener("scroll", () => {
- const nav = document.querySelector(".header");
+function closeMenu() {
+    menuToggle.setAttribute("aria-expanded", "false");
+}
 
-  if (window.scrollY > 50) {
-    nav.classList.add("scrolled");
-  } else {
-    nav.classList.remove("scrolled");
-  }
+menuToggle.addEventListener("click", () => {
+    const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!expanded));
 });
 
-
-
-const elements = document.querySelectorAll(".fade-in");
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
+menu.addEventListener("click", (event) => {
+    if (mobileMenu.matches && event.target.closest("a")) {
+        closeMenu();
+        menuToggle.focus({ preventScroll: true });
     }
-  });
-}, {
-  threshold: 0.1
 });
 
-elements.forEach(el => observer.observe(el));
+header.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && mobileMenu.matches && menuToggle.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+        menuToggle.focus();
+    }
+});
 
+mobileMenu.addEventListener("change", closeMenu);
+menuToggle.hidden = false;
+updateHeaderHeight();
+updateHeaderShadow();
+window.addEventListener("scroll", updateHeaderShadow, { passive: true });
+window.addEventListener("resize", updateHeaderHeight);
 
-// CAMBIOS AGREGADOS CON EL HTML MODAL
+if ("ResizeObserver" in window) {
+    new ResizeObserver(updateHeaderHeight).observe(header);
+}
+
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".fade-in").forEach(section => observer.observe(section));
+}
+
+// Detalles de los proyectos en desarrollo
 const modal = document.getElementById("projectModal");
 const closeModal = document.getElementById("closeModal");
 
@@ -69,6 +98,7 @@ const modalTech = document.getElementById("modalTech");
 const modalStatus = document.getElementById("modalStatus");
 
 const openModalButtons = document.querySelectorAll(".open-modal");
+let modalTrigger;
 
 openModalButtons.forEach(button => {
     button.addEventListener("click", function () {
@@ -77,29 +107,46 @@ openModalButtons.forEach(button => {
         modalTech.textContent = this.dataset.tech;
         modalStatus.textContent = this.dataset.status;
 
-        modal.classList.add("active");
+        modalTrigger = this;
+        modal.showModal();
     });
 });
 
 closeModal.addEventListener("click", function () {
-    modal.classList.remove("active");
+    modal.close();
 });
 
 modal.addEventListener("click", function (e) {
     if (e.target === modal) {
-        modal.classList.remove("active");
+        modal.close();
     }
 });
 
-
-// efectos agregados posteriormente
+modal.addEventListener("close", () => {
+    modalTrigger?.focus({ preventScroll: true });
+});
 
 /* efecto parallax */
 const hero = document.querySelector(".hero");
 const heroContainer = document.querySelector(".hero-container");
+const heroVideo = document.querySelector(".hero-video");
+
+function updateHeroMotion() {
+    if (reducedMotion.matches) {
+        heroContainer.style.removeProperty("transform");
+        heroVideo.pause();
+    } else {
+        heroVideo.play().catch(() => {});
+    }
+}
+
+updateHeroMotion();
+reducedMotion.addEventListener("change", updateHeroMotion);
 
 if (hero && heroContainer) {
     hero.addEventListener("mousemove", function (e) {
+        if (reducedMotion.matches) return;
+
         const x = (window.innerWidth / 2 - e.clientX) / 40;
         const y = (window.innerHeight / 2 - e.clientY) / 40;
 
@@ -125,27 +172,17 @@ sectionTitles.forEach(function (title) {
     }
 });
 
-/* efecto giro antes de abrir demo */
-
+/* efecto giro al abrir demo */
 const flipButtons = document.querySelectorAll(".btn-flip");
 
-flipButtons.forEach(function (button) {
-    button.addEventListener("click", function (e) {
-        e.preventDefault();
+flipButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (reducedMotion.matches) return;
 
-        const url = this.href;
-
-        this.classList.add("is-flipping");
-
-        setTimeout(function () {
-            window.open(url, "_blank", "noopener,noreferrer");
-            button.classList.remove("is-flipping");
-        }, 650);
+        button.classList.add("is-flipping");
+        setTimeout(() => button.classList.remove("is-flipping"), 650);
     });
 });
-
-
-
 
 /* lanzamiento del sobre hacia contacto */
 
@@ -155,6 +192,10 @@ const contactSection = document.getElementById("contacto");
 if (envelopeLaunch && contactSection) {
 
     envelopeLaunch.addEventListener("click", function () {
+        if (reducedMotion.matches) {
+            contactSection.scrollIntoView({ behavior: "instant" });
+            return;
+        }
 
         const envelope = envelopeLaunch.querySelector(".envelope-icon");
 
@@ -169,7 +210,6 @@ if (envelopeLaunch && contactSection) {
 
         document.body.appendChild(flyingEnvelope);
 
-
         /* movimiento de la pagina */
 
         const startPosition = window.scrollY;
@@ -177,14 +217,13 @@ if (envelopeLaunch && contactSection) {
         const targetPosition =
             contactSection.getBoundingClientRect().top +
             window.scrollY -
-            70;
+            header.offsetHeight;
 
         const distance = targetPosition - startPosition;
 
         const duration = 900;
 
         let startTime = null;
-
 
         function scrollAnimation(currentTime) {
 
@@ -201,10 +240,10 @@ if (envelopeLaunch && contactSection) {
                     ? 2 * progress * progress
                     : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
-            window.scrollTo(
-                0,
-                startPosition + distance * ease
-            );
+            window.scrollTo({
+                top: startPosition + distance * ease,
+                behavior: "instant"
+            });
 
             if (progress < 1) {
                 requestAnimationFrame(scrollAnimation);

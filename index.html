@@ -62,7 +62,8 @@
 
             </div>
 
-            <nav class="menu">
+            <button class="menu-toggle btn btn-outline" type="button" aria-controls="site-menu" aria-expanded="false" hidden>Menú</button>
+            <nav class="menu" id="site-menu" aria-label="Navegación principal">
                 <a href="#inicio">Inicio</a>
                 <a href="#sobre-mi">Sobre mí</a>
                 <a href="#proyectos">Proyectos</a>
@@ -75,7 +76,7 @@
 
 
 
-    <!-- seccion del hero -->
+    <main>
     <!-- seccion del hero -->
     <section class="hero" id="inicio">
 
@@ -267,7 +268,7 @@
                 <!-- -----------------SINTEL FLORIDA - LANDING PAGE COMERCIAL ------------------- -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="img/sintel.png" alt="Captura de la demo de StockFast">
+                        <img src="img/sintel.png" alt="Captura del sitio de Sintel Florida">
                     </div>
 
                     <h3>Sintel Florida – Landing page comercial</h3>
@@ -306,7 +307,7 @@
                 <!-- -----------------UTU - BILLETERA VIRTUAL ------------------- -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="img/BIlleteraV.png" alt="Captura de la demo de StockFast">
+                        <img src="img/BIlleteraV.png" alt="Captura de Billetera Virtual Escolar">
                     </div>
 
                     <h3>Billetera Virtual Escolar</h3>
@@ -608,10 +609,10 @@
                         Tecnologías: Next.js, React, TypeScript y Tailwind CSS.
                     </p>
 
-                    <button class="btn btn-outline open-modal" data-title="Sistema de Gestión de Saldo Escolar"
-                        data-description="ServiRed permite que clientes publiquen solicitudes de servicios y que trabajadores independientes se postulen según su rubro, zona y disponibilidad."
-                        data-tech="La plataforma incluye perfiles, estados de trabajo, detalle de solicitudes y sistema de reputación mediante calificaciones."
-                        data-status="Fue desarrollada con Next.js, React, TypeScript y Tailwind CSS, con enfoque en diseño moderno, responsive y fácil de usar.">
+                    <button class="btn btn-outline open-modal" data-title="ServiRed"
+                        data-description="ServiRed permite que clientes publiquen solicitudes de servicios y que trabajadores independientes se postulen según su rubro, zona y disponibilidad. Incluye perfiles, seguimiento de solicitudes y calificaciones entre las partes."
+                        data-tech="Next.js, React, TypeScript y Tailwind CSS."
+                        data-status="En desarrollo.">
                         Saber más
                     </button>
                 </div>
@@ -683,16 +684,19 @@
                     <input type="hidden" name="_subject" value="Nuevo mensaje desde tu portfolio">
                     <input type="hidden" name="_captcha" value="false">
 
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    <label class="visually-hidden" for="contact-nombre">Tu nombre</label>
+                    <input type="text" id="contact-nombre" name="nombre" placeholder="Tu nombre" required>
 
-                    <input type="email" name="email" placeholder="Tu email" required>
+                    <label class="visually-hidden" for="contact-email">Tu email</label>
+                    <input type="email" id="contact-email" name="email" placeholder="Tu email" required>
 
-                    <textarea name="mensaje" placeholder="Tu mensaje" rows="5" required></textarea>
+                    <label class="visually-hidden" for="contact-mensaje">Tu mensaje</label>
+                    <textarea id="contact-mensaje" name="mensaje" placeholder="Tu mensaje" rows="5" required></textarea>
 
                     <button type="submit" class="btn btn-primary">
                         Enviar mensaje
                     </button>
-                    <p id="form-status"></p>
+                    <p id="form-status" aria-live="polite"></p>
 
 
                 </form>
@@ -710,10 +714,11 @@
 
 
 
-    <!-- html mopdal -->
-    <div class="modal-overlay" id="projectModal">
+    </main>
+
+    <dialog class="modal-overlay" id="projectModal" aria-labelledby="modalTitle" aria-describedby="modalDescription">
         <div class="modal-content">
-            <button class="modal-close" id="closeModal">&times;</button>
+            <button class="modal-close" id="closeModal" type="button" aria-label="Cerrar detalles" autofocus>&times;</button>
 
             <h3 id="modalTitle"></h3>
 
@@ -724,8 +729,7 @@
                 <p><strong>Estado actual:</strong> <span id="modalStatus"></span></p>
             </div>
         </div>
-    </div>
-
+    </dialog>
 
     <!-- script a su js -->
     <script src="function.js"></script>
