@@ -1746,3 +1746,94 @@ RESPONSIVE
   z-index: 2;
   background: transparent;
 }
+
+/* LaserFlow ilumina el perímetro de la superficie completa de Contacto. */
+.contact-laser-region {
+  --laser-impact: 58%;
+  --laser-core: #eaf4ff;
+  --laser-light: #60a5fa;
+  --laser-clearance: clamp(452px, 56vh, 560px);
+  --laser-clearance: clamp(452px, 56svh, 560px);
+  --laser-fall: 260px;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding: var(--laser-clearance) 0 clamp(40px, 7vw, 96px);
+  background: linear-gradient(180deg, var(--color-bg), #020617 240px, var(--color-bg));
+}
+
+.laser-flow-canvas {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 auto;
+  display: block;
+  width: 100%;
+  height: calc(var(--laser-clearance) + var(--laser-fall));
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.contact-laser-region.is-laser-ready .laser-flow-canvas {
+  visibility: visible;
+}
+
+.contact-footer-surface {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 1600px);
+  min-height: 540px;
+  margin-inline: auto;
+  padding: clamp(42px, 5.5vw, 84px) clamp(22px, 5vw, 78px);
+  border: 1px solid var(--color-border);
+  border-radius: 26px;
+  background: #080e1c;
+  box-shadow: 0 24px 68px rgba(2, 6, 23, 0.78), 0 8px 22px rgba(2, 6, 23, 0.5);
+}
+
+.contact-footer-surface::before,
+.contact-footer-surface::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.contact-footer-surface::before {
+  background: radial-gradient(ellipse 40% 26px at var(--laser-impact) 0%,
+    color-mix(in srgb, var(--color-primary) 22%, transparent), transparent);
+}
+
+.contact-footer-surface::after {
+  opacity: var(--laser-spill, 0);
+  background:
+    radial-gradient(ellipse clamp(60px, 8vw, 110px) 8px at var(--laser-impact) 0%,
+      var(--laser-core), #dbeafe 22%, var(--laser-light) 54%, transparent),
+    radial-gradient(ellipse var(--laser-reach, 52%) 19px at var(--laser-impact) 0%,
+      var(--laser-light), var(--color-primary) 23%, transparent),
+    radial-gradient(ellipse var(--laser-reach, 52%) 83px at var(--laser-impact) 0%,
+      color-mix(in srgb, var(--color-primary) 56%, transparent), transparent),
+    radial-gradient(ellipse 47px var(--laser-fall) at 100% 0%,
+      color-mix(in srgb, var(--laser-light) 54%, transparent), transparent),
+    radial-gradient(ellipse 30px 98px at 0% 0%,
+      color-mix(in srgb, var(--color-primary-dark) 37%, transparent), transparent);
+}
+
+.contact-footer-surface .contact-container {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .contact-laser-region {
+    --laser-clearance: clamp(236px, 39vh, 360px);
+    --laser-clearance: clamp(236px, 39svh, 360px);
+    --laser-fall: 170px;
+  }
+
+  .contact-footer-surface {
+    min-height: 0;
+    padding: clamp(34px, 6vw, 58px) clamp(16px, 4vw, 38px);
+  }
+}
